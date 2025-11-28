@@ -1,0 +1,57 @@
+spring:
+  application:
+    name: movie-ticket-system
+  
+  datasource:
+    url: jdbc:mysql://localhost:3306/movie_ticket_db
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+    show-sql: false
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+jwt:
+  secret: ${JWT_SECRET:9d5f1d8e52b94c53972f4c1a8bbf47c4e7c1d6a8f9b073c1c6f4a2d9e7b5c3a18f2d4b6c8e0a2c4f6d8b0f2a4c6e8d0b2}
+  expiration: 86400000
+
+stripe:
+  api:
+    key: dummy
+  secret:
+    key: dummy
+  public:
+    key: dummy
+
+
+logging:
+  level:
+    root: INFO
+    com.movieticket: DEBUG
